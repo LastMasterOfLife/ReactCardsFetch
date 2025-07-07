@@ -1,8 +1,8 @@
 export class ApiClass {
     id: string;
-    content: String;
+    content: string;
 
-    constructor(id: string, content: String) {
+    constructor(id: string, content: string) {
         this.id = id;
         this.content = content;
     }

@@ -1,17 +1,24 @@
-import React from "react";
-import { Text, View } from "react-native";
+import { Text, View, Image, TouchableOpacity } from "react-native";
 import { Styles } from "./CardComponentStyles";
 
  export interface CardComponentProps {
-    text: String;
+    text: string;
+    isFavourite: boolean;
+    onToggleFavourite: () => void;
 }
 
-export const CardComponent = (props: CardComponentProps)=>{
-    const { text } = props;
-    return (
-        <View style={Styles.card}>
-            <Text style={Styles.text}>{text}</Text>
-        </View>
-    );
-}
+export const CardComponent = ({ text, isFavourite, onToggleFavourite }: CardComponentProps) => (
+    <View style={Styles.card}>
+        <TouchableOpacity onPress={onToggleFavourite} style={{ height:70 }}>
+            <Image style={Styles.favouriteIcon}
+                source={
+                    isFavourite
+                        ? require("../../../assets/Icons/heart_red.png")
+                        : require("../../../assets/Icons/heart_black.png")
+                }
+            />
+        </TouchableOpacity>
+        <Text>{text}</Text>
+    </View>
+);
 
